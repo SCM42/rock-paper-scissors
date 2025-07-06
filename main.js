@@ -1,5 +1,5 @@
 console.log(getComputerChoice());
-
+getHumanChoice();
 
 //#region
 function getComputerChoice() {
@@ -24,22 +24,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let humanResult = "";
-    
-    switch (getRandomNumber(3)) {
-        case 0: 
-            humanResult = "Rock";
-            break;
-        case 1:
-            humanResult = "Paper";
-            break;
-        case 2:
-            humanResult = "Scissors";
-            break;
-        default:
-            console.log("Error: Number out of bonds");
-            break;
-    }
+    let humanResult = prompt('Please enter either "Rock", "Paper" or "Scissor".');
 
     return humanResult;
 }
