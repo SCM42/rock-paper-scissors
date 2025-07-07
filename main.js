@@ -1,43 +1,94 @@
-var humanScore = 0;
-var computerScore = 0;
+playGame();
 
-function playRound(humanChoice, computerChoice) {
-  if (humanChoice === computerChoice) {
-    console.log("It's a tie!");
-  } else {
-    let winCondition = false;
+function playGame() {
+  var humanScore = 0;
+  var computerScore = 0;
+  var round = 0;
+
+  while (round < 5) {
+    const humanSelection = getHumanChoice().toLowerCase();
+    const computerSelection = getComputerChoice().toLowerCase();
+
+    playRound(humanSelection, computerSelection);
+    round++;
+
+    console.log("Round: " + round);
+    console.log("Player score: " + humanScore);
+    console.log("Computer score: " + computerScore);
+
+    function playRound(humanChoice, computerChoice) {
+      if (humanChoice === computerChoice) {
+        console.log("It's a tie!");
+      } else {
+        let winCondition = false;
+        let message = "";
+
+        // Assigns boolean value to winCondition based on computer answer then assigns a message to display during score change
+        switch (humanChoice) {
+          case "rock":
+            winCondition = computerChoice === "scissors" ? true : false;
+            message = assignMessage(winCondition, "rock");
+            break;
+          case "paper":
+            winCondition = computerChoice === "rock" ? true : false;
+            message = assignMessage(winCondition, "paper");
+            break;
+          case "scissors":
+            winCondition = computerChoice === "paper" ? true : false;
+            message = assignMessage(winCondition, "scissors");
+            break;
+        }
+
+        changeScore(winCondition, message);
+      }
+    }
+  }
+
+  function changeScore(winCondition, message) {
+    console.clear();
+
+    if (winCondition === true) {
+      console.log(message);
+      humanScore++;
+    } else {
+      console.log(message);
+      computerScore++;
+    }
+  }
+
+  function assignMessage(winCondition, answer) {
     let message = "";
 
-    // Assigns boolean value to winCondition based on computer answer then assigns a message to display during score change
-    switch (humanChoice) {
+    switch (answer) {
       case "rock":
-        winCondition = computerChoice === "scissors" ? true : false;
-        
-        message = assignMessage(winCondition, "rock");
+        if (winCondition) {
+          message = "You won! Rock beats scissors.";
+        } else {
+          message = "You lost. Paper beats rock.";
+        }
+
         break;
       case "paper":
-        winCondition = computerChoice === "rock" ? true : false;
-        
-        message = assignMessage(winCondition, "paper");
+        if (winCondition) {
+          message = "You won! Paper beats rock.";
+        } else {
+          message = "You lost. Scissors beats paper.";
+        }
+
         break;
       case "scissors":
-        winCondition = computerChoice === "paper" ? true : false;
-        
-        message = assignMessage(winCondition, "scissors");
+        if (winCondition) {
+          message = "You won! Scissors beats paper.";
+        } else {
+          message = "You lost. Rock beats scissors.";
+        }
+
         break;
     }
 
-    changeScore(winCondition, message);
+    return message;
   }
 }
-
-const humanSelection = getHumanChoice().toLowerCase();
-const computerSelection = getComputerChoice().toLowerCase();
-
-playRound(humanSelection, computerSelection);
-
-console.log("Player score: " + humanScore);
-console.log("Computer score: " + computerScore);
 
 //#region
 function getComputerChoice() {
@@ -72,48 +123,5 @@ function getRandomNumber(max) {
   let number = Math.floor(Math.random() * max);
 
   return number;
-}
-
-function changeScore(winCondition, message) {
-  if (winCondition === true) {
-    console.log(message);
-    humanScore++;
-  } else {
-    console.log(message);
-    computerScore++;
-  }
-}
-
-function assignMessage(winCondition, answer) {
-  let message = "";
-
-  switch (answer) {
-    case "rock":
-      if (winCondition) {
-        message = "You won! Rock beats scissors.";
-      } else {
-        message = "You lost. Paper beats rock.";
-      }
-
-      break;
-    case "paper":
-      if (winCondition) {
-        message = "You won! Paper beats rock.";
-      } else {
-        message = "You lost. Scissors beats paper.";
-      }
-
-      break;
-    case "scissors":
-      if (winCondition) {
-        message = "You won! Scissors beats paper.";
-      } else {
-        message = "You lost. Rock beats scissors.";
-      }
-
-      break;
-  }
-
-  return message;
 }
 //#endregion
