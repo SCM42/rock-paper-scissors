@@ -4,7 +4,7 @@
 Write a JavaScript console game for Rock Paper Scissors. Tasks were as follows...
 
 ### Create a getComputerChoice() function that assigns random answer.
-- I generated a random number generated between 0 and 3 (exclusive).
+- I generated a random number between 0 and 3 (exclusive).
 - Switch-case statement then assigns an answer based on the number given.
 ### Create a getHumanChoice() function that prompts user for answer.
 - Did as asked. There is no special exception handling for this as we are instructed to just assume the user input the selection as required.
