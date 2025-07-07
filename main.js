@@ -3,20 +3,21 @@ playGame();
 function playGame() {
   var humanScore = 0;
   var computerScore = 0;
-  var round = 0;
+  var round = 1;
 
-  while (round < 5) {
-    const humanSelection = getHumanChoice().toLowerCase();
-    const computerSelection = getComputerChoice().toLowerCase();
+  while (round < 6) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
 
-    playRound(humanSelection, computerSelection);
+    playRound(humanSelection.toLowerCase(), computerSelection.toLowerCase());
     round++;
 
-    console.log("Round: " + round);
     console.log("Player score: " + humanScore);
     console.log("Computer score: " + computerScore);
 
     function playRound(humanChoice, computerChoice) {
+      console.log("Round: " + round);
+
       if (humanChoice === computerChoice) {
         console.log("It's a tie!");
       } else {
@@ -45,8 +46,6 @@ function playGame() {
   }
 
   function changeScore(winCondition, message) {
-    console.clear();
-
     if (winCondition === true) {
       console.log(message);
       humanScore++;
@@ -114,7 +113,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-  let humanResult = prompt('Please enter either "Rock", "Paper" or "Scissor".');
+  let humanResult = prompt('Please enter either "Rock", "Paper" or "Scissors".');
 
   return humanResult;
 }
