@@ -19,7 +19,7 @@ Write a JavaScript console game for Rock Paper Scissors. Tasks were as follows..
     - The changeScore() function then displays the message and updates the winner's score by 1.
 ### Write the game to play through five rounds.
 - Not much was changed here other than I had to reorganize my code a little bit to make sure there wasn't any scoping issues and create a new function called playGame().
-- Declared a new variable called round that I initialized at 1. I put the playRound() function inside a while loop that iterates while it's under 6.
+- Declared a new variable called round that I initialized at 1. I put the playRound() function inside a while loop that iterates while it's round is less than 6.
 
 ## Summary
 I was instructed to not waste too much time on styling and additional features and just focus on the tasks given. I have some prior experience already with creating C# console apps so by extension this was not too difficult. This README will most likely be updated when it's time to implement a GUI.
